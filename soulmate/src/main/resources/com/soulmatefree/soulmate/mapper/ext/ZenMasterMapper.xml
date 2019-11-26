@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.soulmatefree.soulmate.mapper.ZenMasterMapper" >
+  <select id="selectZenMasterList" resultMap="BaseResultMap">
+		SELECT id, name, description, nick_name, sex, dynasty, age, creator, create_time, updator, update_time
+		from  zen_master;
+	</select>
+
+
+	<select id="selectToolDictionary" resultType="com.soulmatefree.soulmate.model.vo.Dictionary">
+		select  id, category, value, text, item_order itemOrder , is_bulit_in  isBulitIn  from   tool_dictionary ;
+	</select>
+</mapper>

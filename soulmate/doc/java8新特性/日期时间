@@ -1,0 +1,15 @@
+一.时间标志
+    GMT: 格林威治时间
+    UTC: 标准时间
+    ISO: 标准时间
+    CST: 北京时间 
+    时间加Z：代表标准时间（一般和UTC时间一致） 
+ 
+ 二.时间类的说明
+    LocalDate  本地时区的时间
+    ZonedDateTime  带有时区的时间
+    OffsetDateTime 带有偏移量的时间
+     
+ 三.相关代码见 
+    com.soulmatefree.soulmate.practice.TimePractice    
+     

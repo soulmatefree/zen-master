@@ -1,0 +1,2 @@
+一.Optional 只能对null值进行操作，并不能对空值进行相关的操作
+二.Stream 生成的List,不存在默认是空，不能通过 OPtional 进行判断 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="LOG_DIR" source="log.path"/>
+    <springProperty scope="context" name="LOG_LEVEL" source="log.level"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%2thread] %-5level %logger{35} - %msg %n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 按照每天生成日志文件 -->
+    <appender name="DAYFILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/soulmate.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 -->
+            <FileNamePattern>${LOG_DIR}/app-tool-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <MaxHistory>60</MaxHistory>
+            <!--日志文件最大的大小 -->
+            <MaxFileSize>60MB</MaxFileSize>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%2thread] %-5level %logger{35} - %msg %n</Pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.soulmatefree.soulmate" level="${LOG_LEVEL}"/>
+    <logger name="io.swagger.models.parameters.AbstractSerializableParameter" level="error"/>
+
+    <root level="info">
+        <appender-ref ref="DAYFILE"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
